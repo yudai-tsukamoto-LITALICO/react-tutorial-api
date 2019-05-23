@@ -1,6 +1,7 @@
 module Api
   module V1
     class UsersController < Api::V1::ApplicationController
+      before_action :authorize_request, only: [:show]
       def create
         user = User.new(user_params)
         if user.save
